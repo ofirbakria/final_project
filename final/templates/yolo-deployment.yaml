@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.releaseName }}-yolo-deployment
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.releaseName }}-yolo
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: {{ .Values.maxSurge }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.releaseName }}-yolo
+    spec:
+      containers:
+        - name: {{ .Values.releaseName }}-yolo
+          image: {{ .Values.image.yoloRepository }}:{{ .Values.image.yoloTag }}
+          env:
+            - name: BUCKET_NAME
+              value: "oferbakria"
+            - name: SQS_QUEUE_NAME
+              value: "oferbakria_aws_sqs"
+            - name: LOAD_BALANCER
+              value: "https://oferbakria.atech-bot.click"
+            - name: DYNAMO_TABLE
+              value: "oferbakria_awsproject"
+          volumeMounts:
+            - name: aws-credentials
+              mountPath: /root/.aws
+              readOnly: true
+          ports:
+            - containerPort: {{ .Values.yoloPort }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+      volumes:
+        - name: aws-credentials
+          secret:
+            secretName: aws-credentials

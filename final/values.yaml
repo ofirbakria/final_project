@@ -1,0 +1,27 @@
+replicaCount: 1
+
+releaseName: final-project
+
+image:
+  polyRepository: oferbakria/poly
+  polyTag: "1.7"
+  yoloRepository: oferbakria/yolo
+  yoloTag: "1.7"
+
+polyPort: 8443
+yoloPort: 8441
+
+
+service:
+  port: 80
+
+ingress:
+  name: ingress-hosts
+  host: oferbakria.atech-bot.click
+  path: "/"
+  tls: tls-secret-oferbakria
+
+imagePullSecrets: dockerhub
+
+maxSurge: 3
+

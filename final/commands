@@ -1,0 +1,12 @@
+helm upgrade finalproject -f .\values.yaml -n oferbakria .
+helm install finalproject -f .\values.yaml -n oferbakria .
+helm uninstall finalproject -n oferbakria .
+
+kubectl create secret generic aws-credentials --from-file=credentials=C:\Users\User\.aws\credentials -n oferbakria
+
+https://api.telegram.org/bot<your-bot-token>/setWebhook?url=https://<your-load-balancer-url>/your-webhook-path
+docker run -it --rm poly bash
+
+
+kubectl version --client
+helm version

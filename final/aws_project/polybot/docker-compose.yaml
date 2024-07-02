@@ -1,0 +1,21 @@
+version: "3"
+services:
+  poly:
+    image: oferbakria/poly:1.2
+    
+    container_name: poly
+    
+    ports:
+      - 8443:8443
+    environment:
+      - LOAD_BALANCER=oferbakria.atech-bot.click
+      
+    volumes:
+      # - ./YOURPRIVATE.key:/app/YOURPRIVATE.key
+      # - ./YOURPUBLIC.pem:/app/YOURPUBLIC.pem
+      # - /home/ubuntu/.aws/credentials:/root/.aws/credentials
+        - C:\Users\User\.aws\credentials:/root/.aws/credentials
+        - ./bot.py:/app/bot.py
+      # - ./polybot/app.py:/app/app.py
+      
+    restart: always

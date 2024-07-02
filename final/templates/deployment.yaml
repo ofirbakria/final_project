@@ -1,0 +1,56 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: {{ .Values.releaseName }}-deployment
+# spec:
+#   replicas: {{ .Values.replicaCount }}
+#   selector:
+#     matchLabels:
+#       app: {{ .Values.releaseName }}
+#   strategy:
+#     type: RollingUpdate
+#     rollingUpdate:
+#       maxUnavailable: 1
+#       maxSurge: {{ .Values.maxSurge }}
+#   template:
+#     metadata:
+#       labels:
+#         app: {{ .Values.releaseName }}
+#     spec:
+#       containers:
+
+#         - name: {{ .Values.releaseName }}-polybot
+#           image: {{ .Values.image.polyRepository }}:{{ .Values.image.polyTag }}
+#           env:
+#           - name: LOAD_BALANCER
+#             value: "https://oferbakria.atech-bot.click"
+#           volumeMounts:
+#             - name: aws-credentials
+#               mountPath: /root/.aws
+#               readOnly: true
+#           ports:
+#             - containerPort: {{ .Values.polyPort }}
+
+#         - name: {{ .Values.releaseName }}-yolo
+#           image: {{ .Values.image.yoloRepository }}:{{ .Values.image.yoloTag }}
+#           env:
+#           - name: BUCKET_NAME
+#             value: "oferbakria"
+#           - name: SQS_QUEUE_NAME
+#             value: "oferbakria_aws_sqs"
+#           - name: LOAD_BALANCER
+#             value: "https://oferbakria.atech-bot.click"
+#           volumeMounts:
+#             - name: aws-credentials
+#               mountPath: /root/.aws
+#               readOnly: true
+#           ports:
+#             - containerPort: {{ .Values.yoloPort }}
+
+#       imagePullSecrets:
+#         - name: {{ .Values.imagePullSecrets }}
+
+#       volumes:
+#         - name: aws-credentials
+#           secret:
+#             secretName: aws-credentials
