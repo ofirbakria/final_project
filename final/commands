@@ -10,3 +10,13 @@ docker run -it --rm poly bash
 
 kubectl version --client
 helm version
+
+#################################################################################
+create new ssh key for github
+ssh-keygen -t ed25519 -C "ofir.bakria@gmail.com"
+add publict the githubssh
+add private in jenkins pipline
+add trusted push to github from node using command :
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+
