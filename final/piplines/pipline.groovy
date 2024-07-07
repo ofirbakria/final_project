@@ -29,23 +29,23 @@ pipeline {
 
     agent { label 'jenkins_ec2' } // Use the label of your EC2 agent
 
-    // triggers {
-    //     GenericTrigger(
-    //             genericVariables: [
-    //                     [key: 'refsb', value: '$.ref'],
-    //                     [key: 'pusher', value: '$.pusher.name'],
-    //                     [key: 'change_files', value: '$.commits[0].modified[0]'],
-    //                     // [key: 'type', value: '$.changes[0].type'],
-    //             ],
-    //             token: "123456",
-    //             tokenCredentialId: '',
-    //             printContributedVariables: true,
-    //             printPostContent: false,
-    //             silentResponse: false,
-    //             regexpFilterText: '$refsb $change_files',
-    //             regexpFilterExpression: '^(refs/heads/main)'        
-    //     )
-    // }
+    triggers {
+        GenericTrigger(
+                genericVariables: [
+                        [key: 'refsb', value: '$.ref'],
+                        [key: 'pusher', value: '$.pusher.name'],
+                        [key: 'change_files', value: '$.commits[0].modified[0]'],
+                        // [key: 'type', value: '$.changes[0].type'],
+                ],
+                token: "123456",
+                tokenCredentialId: '',
+                printContributedVariables: true,
+                printPostContent: false,
+                silentResponse: false,
+                regexpFilterText: '$refsb $change_files',
+                regexpFilterExpression: '^(refs/heads/main)'        
+        )
+    }
 
 
     stages {
