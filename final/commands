@@ -19,4 +19,6 @@ add private in jenkins pipline
 add trusted push to github from node using command :
 ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-
+################################
+for webhook
+GitHub Integration Plugin on jenkins Plugin
