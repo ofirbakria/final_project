@@ -24,3 +24,8 @@ for webhook
 GitHub Integration Plugin on jenkins Plugin
 "" "" Generic Webhook Trigger Plugin then reboot
 set token as paramter http://url/generic-webhook-trigger/invoke?token=value
+
+
+
+###############################
+kubectl get hpa -n oferbakria
