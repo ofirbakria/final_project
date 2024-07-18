@@ -23,6 +23,18 @@ pipeline {
     stages {
 
 
+
+        stage('delete t golder'){
+            steps {
+                script {
+                    println("=====================================${STAGE_NAME}=====================================")
+                    println("Deleting.git folder")
+                    sh 'rm -rf .git'
+
+                }
+            }
+        }
+
     stage('Git clone') {
         steps {
             script {
