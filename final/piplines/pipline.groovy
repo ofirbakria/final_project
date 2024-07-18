@@ -50,15 +50,25 @@ pipeline {
 
     stages {
 
-        
-        
-    stage('SCM') {
-        checkout scm
+
+    stage('SCM'){
+        steps {
+            script {
+                println("=====================================${STAGE_NAME}=====================================")
+                checkout scm
+            }
+        }
     }
-    stage('SonarQube Analysis') {
-        def scannerHome = tool 'SonarScanner';
-        withSonarQubeEnv() {
-        sh "${scannerHome}/bin/sonar-scanner"
+
+    stage('SonarQube Analysis'){
+        steps {
+            script {
+                println("=====================================${STAGE_NAME}=====================================")
+                def scannerHome = tool 'SonarScanner';
+                withSonarQubeEnv() {
+                sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
         }
     }
 
