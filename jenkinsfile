@@ -54,7 +54,7 @@ pipeline {
         steps {
             script {
                 println("=====================================${STAGE_NAME}=====================================")
-                println("Hello   broooo  2 ${PROP.trigg_by}")
+                println("Hello   broooo 2 ${PROP.trigg_by}")
             }
         }
     }
