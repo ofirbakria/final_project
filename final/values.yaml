@@ -4,9 +4,9 @@ releaseName: final-project
 
 image:
   polyRepository: oferbakria/poly
-  polyTag: "2.0"
+  polyTag: "2.1"
   yoloRepository: oferbakria/yolo
-  yoloTag: "2.0"
+  yoloTag: "2.1"
 
 polyPort: 8443
 yoloPort: 8441
