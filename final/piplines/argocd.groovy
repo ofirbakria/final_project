@@ -55,7 +55,10 @@ pipeline {
                 script {
                     println("=====================================${STAGE_NAME}=====================================")
                     println("Deleting.git folder")
-                    sh 'rm -rf .git'    
+                    sh 'rm -rf .git'  
+                    // sh 'rm -rf final/aws_project'
+                    // sh 'rm -rf final/piplines'  
+
                 }
             }
         }
