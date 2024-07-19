@@ -73,7 +73,7 @@ class Bot:
         """Bot Main message handler"""
         logger.info(f'Incoming message: {msg}')
         if 'text' in msg:
-            self.send_text(msg['chat']['id'], f'3 :Your original message: {msg["text"]}')
+            self.send_text(msg['chat']['id'], f':Your message: {msg["text"]}')
         else:
             self.send_text(msg['chat']['id'], "Sorry, I couldn't process your message.")
 

@@ -64,7 +64,7 @@ TELEGRAM_APP_URL = os.environ['LOAD_BALANCER']
   
 @app.route('/', methods=['GET'])
 def index():
-    return 'Have a good day Brooooooooooooooooo'
+    return 'Have a good day Bro'
 
 
 @app.route(f'/{TELEGRAM_TOKEN}/', methods=['POST'])
