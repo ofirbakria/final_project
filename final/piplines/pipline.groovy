@@ -66,7 +66,11 @@ pipeline {
                 println("=====================================${STAGE_NAME}=====================================")
                 def scannerHome = tool 'SonarScanner';
                 withSonarQubeEnv() {
-                    sh "${scannerHome}/bin/sonar-scanner"
+                    sh """
+                        ${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=oferbakria \
+                        -Dsonar.sources=./final  
+                    """
                 }
             }
         }
