@@ -26,3 +26,4 @@ jobs:
 
           git remote add target https://ofirbakria:${{ secrets.PAT }}@github.com/ofirbakria/forArgo.git
           git push --mirror target
+          
