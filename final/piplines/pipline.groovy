@@ -62,31 +62,6 @@ pipeline {
     }
 
 
-    stage('SCM'){
-        steps {
-            script {
-                println("=====================================${STAGE_NAME}=====================================")
-                checkout scm
-            }
-        }
-    }
-
-    stage('SonarQube Analysis'){
-        steps {
-            script {
-                println("=====================================${STAGE_NAME}=====================================")
-                def scannerHome = tool 'SonarScanner';
-                withSonarQubeEnv() {
-                    sh """
-                        ${scannerHome}/bin/sonar-scanner \
-                        -Dsonar.projectKey=oferbakria \
-                        -Dsonar.sources=./final  
-                    """
-                }
-            }
-        }
-    }
-
 
     stage('Git clone') {
         steps {
@@ -229,6 +204,33 @@ pipeline {
             }
         }
 
+
+
+
+    stage('SCM'){
+        steps {
+            script {
+                println("=====================================${STAGE_NAME}=====================================")
+                checkout scm
+            }
+        }
+    }
+
+    stage('SonarQube Analysis'){
+        steps {
+            script {
+                println("=====================================${STAGE_NAME}=====================================")
+                def scannerHome = tool 'SonarScanner';
+                withSonarQubeEnv() {
+                    sh """
+                        ${scannerHome}/bin/sonar-scanner \
+                        -Dsonar.projectKey=oferbakria \
+                        -Dsonar.sources=./final  
+                    """
+                }
+            }
+        }
+    }
 
 
 
